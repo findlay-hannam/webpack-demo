@@ -2,7 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    app: './src/index.tsx',
+    style: './src/style.css',
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+  },
   mode: 'production',
   module: {
     rules: [
@@ -16,14 +23,14 @@ module.exports = {
         },
         exclude: /node_modules/,
       },
+      {
+        test: /\.(css)$/,
+        use: ['style-loader','css-loader'],
+      },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
   },
   plugins: [
     // Any JS or CSS bundles webpack emits will be magically embedded into the html page
