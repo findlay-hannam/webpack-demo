@@ -1,3 +1,5 @@
+$background: #6200EE;
+
 .container {
   height: 100vh;
   background-color: #E7E3EB;
@@ -5,7 +7,7 @@
 
 .header {
   padding: 15px 20px;
-  background-color: #6200EE;
+  background-color: $background;
 }
 
 h1 {
